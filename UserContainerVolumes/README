@@ -1,0 +1,2 @@
+This Dir contains the Volumes for the Docker Containers.
+Each Volume is created by its Userhandle, contains every image and annotation as well as TF Models and Scripts
