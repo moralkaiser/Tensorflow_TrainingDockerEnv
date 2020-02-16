@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:devel-gpu
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y git nano vim wget php
+RUN apt-get update && apt-get install -y git nano vim wget php cron
 WORKDIR ~/
 RUN pip install --upgrade pip
 RUN apt-get install -y python3-pip 
