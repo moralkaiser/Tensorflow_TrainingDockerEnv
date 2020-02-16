@@ -11,6 +11,7 @@ IFS=$SAVEIFS   # Restore IFS
 #for i in "${userhandle[@]}"; do echo "$i"; echo next; done
 
 mkdir /root/.jupyter
+rm -rf /root/.jupyter/jupyter_notebook_config.json
 echo '{
   "NotebookApp": {
     "token": "'"${userhandle[0]}"'"
