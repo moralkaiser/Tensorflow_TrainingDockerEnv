@@ -10,6 +10,7 @@ if [ ! -z $2 ]; then
 	./copyTFModels.sh $1
 	./launchDockerContainer.sh $1
 	./startContainerPhpApi.sh $1
+	./backupBashrcOfContainer.sh $1
 	
 	GREEN='\e[32m'
 	NC='\033[0m' # No Color

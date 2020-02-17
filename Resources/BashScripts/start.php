@@ -1,4 +1,0 @@
-<?php
-exec("./startDatabuildAndTraining.sh");
-?>
-

@@ -98,9 +98,14 @@ python export_inference_graph \
             }"
 """
 import tensorflow as tf
+import sys
+import os
 from google.protobuf import text_format
 from object_detection import exporter
 from object_detection.protos import pipeline_pb2
+
+os.environ["CUDA_VISIBLE_DEVICES"]=sys.argv[1]
+os.environ["NVIDIA_VISIBLE_DEVICES"]=sys.argv[1]
 
 slim = tf.contrib.slim
 flags = tf.app.flags

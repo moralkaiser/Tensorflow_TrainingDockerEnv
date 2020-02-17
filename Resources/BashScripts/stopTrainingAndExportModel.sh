@@ -23,6 +23,6 @@ done
 
 cd /tensorflow/models/research/volume/scripts/bash
 
-./createPB.sh $max
+./createPB.sh $max $1
 ./prepareTestingDir.sh
 

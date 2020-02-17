@@ -7,7 +7,7 @@ chmod -R 777 /tensorflow/models/research/volume/frozen-graph/saved_model
 #chmod -R 777 /tensorflow/models/research/volume/frozen-graph/saved_model/variables
 
 cd $volumeDir
-python3 export_inference_graph.py \
+python3 export_inference_graph.py $2 \
     --input_type=image_tensor \
     --pipeline_config_path=training/ssd_inception_v2_coco.config \
     --trained_checkpoint_prefix=./training/model.ckpt-$1 \

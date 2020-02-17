@@ -1,3 +1,5 @@
+./setGpuToUse.sh $1
+export GPUTOUSE=$1
 cp /tensorflow/models/research/volume/test_model.ipynb /tensorflow/models/research/object_detection
 
 cd /tensorflow/models/research/volume
