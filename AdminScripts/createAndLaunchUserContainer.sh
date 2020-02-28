@@ -2,9 +2,10 @@
 
 if [ ! -z $1 ]; then
 if [ ! -z $2 ]; then
+	./launchWorkloadManagement.sh
 	./createUserDir.sh $1 $2
 	./copyJupyterModelTesting.sh $1
-	./registerContainer.sh $1
+	./registerContainer.sh $1 $2
 
 	./copyScripts.sh $1
 	./copyTFModels.sh $1
