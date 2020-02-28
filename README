@@ -1,0 +1,5 @@
+Collection Of Scripts to Create Tensorflow UserContainer and Docker Training Environment
+
+If used/cloned first time, run ./setup.sh
+
+Docker must be installed
