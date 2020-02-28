@@ -18,7 +18,7 @@ function executeDeleteTask() {
 }
 
 if [ ! -z $1 ]; then
-	if [ $2 == "-y" ]; then
+	if [ ! -z $2 ] &&  [ $2 == "-y" ]; then
 		executeDeleteTask $1	
 	else
 		read  -n 1 -p "This script deletes the Container and all User Files. Proceed? (Y/N):" dialogInput
