@@ -71,7 +71,7 @@ function getFreeGPU(){
 	return $freeGPUs;
 }
 
-function userhandleAlreadyExists($userhandle){
+function userhandleAlreadyWorks($userhandle){
 	$userhandleFound = 0;
 	
 	if (($handle = fopen("runningContainerList.csv", "r")) !== FALSE) 
@@ -119,7 +119,7 @@ function makeCurlToTrainingContainer($userhandle,$gpu){
 }
 
 $userhandle = $_GET["userhandle"];
-if(userhandleAlreadyExists($userhandle))
+if(userhandleAlreadyWorks($userhandle))
 {
 	$gpu = getUserData($userhandle)[0];
 	

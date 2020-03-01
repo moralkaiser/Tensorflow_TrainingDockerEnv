@@ -1,4 +1,23 @@
 <?php
+function doesUserhandleExist($userhandle){
+	$userhandleFound = 0;
+
+        if (($handle = fopen("containerList.csv", "r")) !== FALSE) 
+        {
+                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) 
+                {
+                        if($data[0] == $userhandle)
+                        {
+                                $userhandleFound = 1;
+                        }
+                }
+    
+                fclose($handle);
+        }
+
+        return $userhandleFound;
+}
+
 function getGPUCount(){
 	$GPUCount = 0;
 	if (($handle = fopen("config.csv", "r")) !== FALSE) 
@@ -90,7 +109,7 @@ function getFreeGPU(){
 	return $freeGPUs;
 }
 
-function userhandleAlreadyExists($userhandle){
+function userhandleAlreadyWorks($userhandle){
 	$userhandleFound = 0;
 	
 	if (($handle = fopen("runningContainerList.csv", "r")) !== FALSE) 
@@ -110,7 +129,7 @@ function userhandleAlreadyExists($userhandle){
 }
 
 function makeCurlToTrainingContainer($userhandle,$gpu){
-    	$url = "http://tf_trainingcontainer_" .$userhandle .  ":800/starttraining.php?gpu=" . $gpu;
+    	$url = "http://tf_trainingcontainer_" . $userhandle .  ":800/starttraining.php?gpu=" . $gpu;
     	$handle = curl_init();
     	curl_setopt($handle, CURLOPT_URL, $url);
 	curl_setopt($handle,CURLOPT_TIMEOUT,1);
@@ -119,7 +138,7 @@ function makeCurlToTrainingContainer($userhandle,$gpu){
 }
 
 $userhandle = $_GET["userhandle"];
-if(hasFreeGPU() && !userhandleAlreadyExists($userhandle))
+if(hasFreeGPU() && !userhandleAlreadyWorks($userhandle) && doesUserhandleExist($userhandle))
 {
 	$gpu = array_rand(getFreeGPU(),1);
 	registerUser($gpu, $userhandle, "training");

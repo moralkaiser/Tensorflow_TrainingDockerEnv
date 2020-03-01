@@ -1,4 +1,23 @@
 <?php
+function doesUserhandleExist($userhandle){
+        $userhandleFound = 0;
+
+        if (($handle = fopen("containerList.csv", "r")) !== FALSE) 
+        {
+                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) 
+                {
+                        if($data[0] == $userhandle)
+                        {
+                                $userhandleFound = 1;
+                        }
+                }
+    
+                fclose($handle);
+        }
+
+        return $userhandleFound;
+}
+
 function getGPUCount(){
 	$GPUCount = 0;
 	if (($handle = fopen("config.csv", "r")) !== FALSE) 
@@ -90,7 +109,7 @@ function getFreeGPU(){
 	return $freeGPUs;
 }
 
-function userhandleAlreadyExists($userhandle){
+function userhandleAlreadyWorks($userhandle){
 	$userhandleFound = 0;
 	
 	if (($handle = fopen("runningContainerList.csv", "r")) !== FALSE) 
@@ -119,7 +138,7 @@ function makeCurlToTrainingContainer($userhandle,$gpu){
 }
 
 $userhandle = $_GET["userhandle"];
-if(hasFreeGPU() && !userhandleAlreadyExists($userhandle))
+if(hasFreeGPU() && !userhandleAlreadyWorks($userhandle) && doesUserhandleExist($userhandle))
 {
 	$gpu = array_rand(getFreeGPU(),1);
 	registerUser($gpu, $userhandle, "jupyter");

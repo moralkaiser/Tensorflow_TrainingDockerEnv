@@ -3,7 +3,7 @@
 cd ..
 cd TrainingWorkloadManagement
 if [ ! -z $1 ]; then
-	echo "$1_container,$2" >> containerList.csv
+	echo "$1,$2" >> containerList.csv
 else
 	RED='\033[0;31m'
 	NC='\033[0m' # No Color
