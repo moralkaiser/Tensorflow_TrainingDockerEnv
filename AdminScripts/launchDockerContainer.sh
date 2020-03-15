@@ -1,7 +1,7 @@
 # This script creates and launches the Docker Container with the userHandle
 
 if [ ! -z $1 ]; then
-	docker network create tf_containerlink_$1
+	#docker network create tf_containerlink_$1
 	cd ..
 	cd UserContainerVolumes
 	cd $1/scripts/bash

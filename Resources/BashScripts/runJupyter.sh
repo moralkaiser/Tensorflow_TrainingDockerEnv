@@ -21,4 +21,4 @@ echo '{
 }' >> /root/.jupyter/jupyter_notebook_config.json
 
 cd /tensorflow/models/research
-jupyter-notebook --ip="0.0.0.0" --no-browser --allow-root
+jupyter-notebook --ip="0.0.0.0" --no-browser --allow-root --notebook-dir=./object_detection
